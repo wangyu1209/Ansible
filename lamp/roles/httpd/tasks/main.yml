@@ -1,0 +1,9 @@
+- name: web server install
+  yum: name=httpd state=present
+- name: provide test page
+  copy: src=index.php dest=/var/www/html
+- name: delete apache config
+  shell: rm -rf /etc/httpd/conf/httpd.conf
+- name: provide configuration file
+  copy: src=httpd.conf dest=/etc/httpd/conf/httpd.conf
+  notify: restart httpd

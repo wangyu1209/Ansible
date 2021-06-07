@@ -1,0 +1,7 @@
+- name: install the mysql
+  yum: name=mariadb-server state=present    
+- name: provide configration file
+  copy: src=my.cnf dest=/etc/my.cnf    
+- name: start mariadb
+  service: name=mariadb enabled=yes state=started    
+
